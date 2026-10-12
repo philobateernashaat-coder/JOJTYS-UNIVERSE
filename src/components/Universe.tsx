@@ -1,3 +1,4 @@
+
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
 
 type Props = {
@@ -38,9 +39,17 @@ function Stars({ count = 42 }: { count?: number }) {
   return <div className="starfield" aria-hidden="true">{Array.from({ length: count }, (_, i) => <i key={i} style={{ '--x': `${(i * 37 + 7) % 100}%`, '--y': `${(i * 61 + 3) % 100}%`, '--delay': `${(i % 9) * -0.7}s`, '--size': `${i % 5 === 0 ? 3 : 1 + (i % 2)}px` } as CSSProperties} />)}</div>;
 }
 
-function Intro({ next }: { next: () => void }) {
+function Intro({ next, startMusic }: { next: () => void; startMusic: () => void }) {
   const [entering, setEntering] = useState(false);
-  const begin = () => { if (entering) return; setEntering(true); window.setTimeout(next, 850); };
+
+  const begin = () => {
+    if (entering) return;
+
+    startMusic();
+    setEntering(true);
+    window.setTimeout(next, 850);
+  };
+
   return <SceneFrame scene={1} className={entering ? 'warp' : ''}>
     <Stars />
     <div className="scene-kicker">A VERY OFFICIAL COSMIC INVITATION <span>NO. 18—1020</span></div>
@@ -460,8 +469,28 @@ function Finale({ stars, replay }: { stars: number; replay: () => void }) {
 }
 
 export default function Universe({ scene, goTo, stars, addStars, replay }: Props) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const startMusic = useCallback(() => {
+    if (!audioRef.current) {
+      const audio = new Audio(
+        `${import.meta.env.BASE_URL}audio/birthday-music.mp3`
+      );
+
+      audio.loop = true;
+      audio.volume = 0.35;
+      audioRef.current = audio;
+    }
+
+    if (audioRef.current.paused) {
+      void audioRef.current.play().catch((error: unknown) => {
+        console.error('Birthday music could not play:', error);
+      });
+    }
+  }, []);
+
   return <>
-    {scene === 1 && <Intro next={() => goTo(2)} />}
+    {scene === 1 && <Intro next={() => goTo(2)} startMusic={startMusic} />}
     {scene === 2 && <Certificate next={() => goTo(3)} />}
     {scene === 3 && <MiniGame next={() => goTo(4)} total={stars} addStars={addStars} />}
     {scene === 4 && <Letter next={() => goTo(5)} />}

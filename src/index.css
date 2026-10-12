@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 234 38% 8%;
+
+  --foreground: 37 52% 91%;
+
+  --border: 254 23% 27%;
+
+  --card: 237 32% 13%;
+
+  --card-foreground: 37 52% 91%;
+
+  --card-border: 254 23% 27%;
+
+  --sidebar: 234 38% 8%;
+
+  --sidebar-foreground: 37 52% 91%;
+
+  --sidebar-border: 254 23% 27%;
+
+  --sidebar-primary: 330 75% 72%;
+
+  --sidebar-primary-foreground: 234 38% 8%;
+
+  --sidebar-accent: 248 31% 19%;
+
+  --sidebar-accent-foreground: 37 52% 91%;
+
+  --sidebar-ring: 330 75% 72%;
+
+  --popover: 237 32% 13%;
+
+  --popover-foreground: 37 52% 91%;
+
+  --popover-border: 254 23% 27%;
+
+  --primary: 330 75% 72%;
+
+  --primary-foreground: 234 38% 8%;
+
+  --secondary: 188 69% 72%;
+
+  --secondary-foreground: 234 38% 8%;
+
+  --muted: 248 31% 19%;
+
+  --muted-foreground: 252 20% 69%;
+
+  --accent: 44 91% 73%;
+
+  --accent-foreground: 234 38% 8%;
+
+  --destructive: 5 72% 64%;
+
+  --destructive-foreground: 37 52% 91%;
+
+  --input: 254 23% 27%;
+  --ring: 330 75% 72%;
+  --chart-1: 330 75% 72%;
+  --chart-2: 188 69% 72%;
+  --chart-3: 44 91% 73%;
+  --chart-4: 280 55% 72%;
+  --chart-5: 5 72% 64%;
+
+  --app-font-sans: 'Manrope', sans-serif;
+  --app-font-serif: 'Space Grotesk', sans-serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --radius: 0.5rem; /* 8px */
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(
+    from hsl(var(--primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(
+    from hsl(var(--secondary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
+      alpha
+  );
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(
+    from hsl(var(--accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(
+    from hsl(var(--destructive)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+
+  --opaque-button-border-intensity: 9; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background: 234 38% 8%;
+
+  --foreground: 37 52% 91%;
+
+  --border: 254 23% 27%;
+
+  --card: 237 32% 13%;
+
+  --card-foreground: 37 52% 91%;
+
+  --card-border: 254 23% 27%;
+
+  --sidebar: 234 38% 8%;
+
+  --sidebar-foreground: 37 52% 91%;
+
+  --sidebar-border: 254 23% 27%;
+
+  --sidebar-primary: 330 75% 72%;
+
+  --sidebar-primary-foreground: 234 38% 8%;
+
+  --sidebar-accent: 248 31% 19%;
+
+  --sidebar-accent-foreground: 37 52% 91%;
+
+  --sidebar-ring: 330 75% 72%;
+
+  --popover: 237 32% 13%;
+
+  --popover-foreground: 37 52% 91%;
+
+  --popover-border: 254 23% 27%;
+
+  --primary: 330 75% 72%;
+
+  --primary-foreground: 234 38% 8%;
+
+  --secondary: 188 69% 72%;
+
+  --secondary-foreground: 234 38% 8%;
+
+  --muted: 248 31% 19%;
+
+  --muted-foreground: 252 20% 69%;
+
+  --accent: 44 91% 73%;
+
+  --accent-foreground: 234 38% 8%;
+
+  --destructive: 5 72% 64%;
+
+  --destructive-foreground: 37 52% 91%;
+
+  /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
+  --input: 254 23% 27%;
+  --ring: 330 75% 72%;
+  --chart-1: 330 75% 72%;
+  --chart-2: 188 69% 72%;
+  --chart-3: 44 91% 73%;
+  --chart-4: 280 55% 72%;
+  --chart-5: 5 72% 64%;
+
+  --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-md:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
+    0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+@layer utilities {
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {
+  }
+
+  .no-default-active-elevate {
+  }
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
+
+:root{font-family:var(--app-font-sans);color:#f5e9df;background:#100f20;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+html{min-width:320px;background:#100f20;scroll-behavior:smooth}
+body{margin:0;min-width:320px;min-height:100dvh;background:#100f20;color:#f5e9df}
+button{font:inherit}
+button:focus-visible{outline:2px solid #ffe18b;outline-offset:5px}
+.universe-shell{position:relative;min-height:100dvh;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#30264c 0%,#19172e 39%,#100f20 78%);isolation:isolate}
+.universe-grain{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
+.journey-progress{height:62px;max-width:1280px;margin:auto;padding:0 6vw;display:flex;align-items:center;gap:22px;position:relative;z-index:5}
+.brand-stamp{font:700 15px 'Space Grotesk';letter-spacing:-.08em;color:#f4cb86}.brand-stamp span{color:#eaa5d2}
+.progress-track{display:flex;gap:5px;width:98px}.progress-track i{height:2px;flex:1;border-radius:9px;background:#ffffff20;transition:background .35s}.progress-track i.active{background:#e9a9cf;box-shadow:0 0 9px #e9a9cf70}
+.progress-label{margin-left:auto;font:10px 'DM Mono';letter-spacing:.11em;color:#adabc3}.progress-label b{color:#615f7c;font-weight:400}
+.scene{position:relative;min-height:calc(100dvh - 62px);max-width:1440px;margin:0 auto;padding:30px clamp(22px,7vw,100px) 34px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:scene-in .75s cubic-bezier(.2,.8,.2,1) both}
+.starfield{position:absolute;inset:0;pointer-events:none;overflow:hidden}.starfield i{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);border-radius:50%;background:#f9e6c1;opacity:.5;animation:twinkle 3.7s ease-in-out var(--delay) infinite alternate}
+.scene-kicker,.bottom-mark,.control-top,.control-footer,.finale-top{position:absolute;left:clamp(24px,7vw,100px);right:clamp(24px,7vw,100px);display:flex;justify-content:space-between;align-items:center;font:9px 'DM Mono';letter-spacing:.14em;color:#aaa5c1}.scene-kicker{top:25px}.scene-kicker span{color:#6f6b89}.bottom-mark{bottom:22px;color:#77738c;font-size:8px}
+.intro-copy{width:min(100%,800px);position:relative;z-index:1;text-align:center;padding-top:5px}
+.eyebrow{font:10px 'DM Mono';letter-spacing:.19em;color:#d5a9cb;text-transform:uppercase;margin:0 0 17px}
+.intro-copy h1,.finale-main h2{font:600 clamp(42px,9vw,102px)/.91 'Space Grotesk';letter-spacing:-.075em;margin:0;color:#fff0df}
+.intro-copy h1 em,.finale-main h2 em,.certificate-wrap h2 em,.game-heading h2 em,.letter-intro h2 em{font-style:normal;color:#e8acd3}
+.intro-copy h1 span{font:clamp(24px,4vw,42px) 'Manrope';vertical-align:top;letter-spacing:0}
+.intro-sub{font-size:clamp(14px,2vw,17px);color:#c0b8d2;margin:22px 0 0}
+.orbit-stage{height:clamp(270px,43vh,390px);width:min(600px,100%);position:relative;margin:5px auto 0;display:grid;place-items:center}
+.orbit{position:absolute;border:1px solid #e1bfe32c;border-radius:50%;width:min(76vw,420px);height:min(34vw,190px);transform:rotate(-21deg)}
+.orbit-two{width:min(68vw,360px);height:min(47vw,255px);transform:rotate(58deg);border-color:#7ee3dd24}
+.planet{position:relative;width:clamp(146px,27vw,216px);aspect-ratio:1;border-radius:50%;border:1px solid #fff2df7a;color:#fff2df;background:radial-gradient(circle at 32% 28%,#f6c2d9 0 3%,#bb85bd 12%,#65539a 37%,#2b2754 68%,#1c2046 100%);box-shadow:inset -25px -22px 40px #10112e91,0 0 48px #c588d44d,0 0 110px #be86c42b;cursor:pointer;z-index:2;transition:transform .4s,box-shadow .4s}
+.planet:before{content:"";position:absolute;inset:22% -4%;border:1px solid #f7dcaa88;border-radius:50%;transform:rotate(-18deg);box-shadow:0 0 12px #e7c9a244}
+.planet span{font:700 clamp(15px,3vw,21px) 'Space Grotesk';letter-spacing:.16em;text-shadow:0 2px 20px #221739}
+.planet:hover{transform:scale(1.05);box-shadow:inset -25px -22px 40px #10112e91,0 0 60px #edaedc88,0 0 120px #be86c45b}
+.gift-portal{position:absolute;right:11%;bottom:21%;width:82px;height:82px;border-radius:24px;border:1px solid #f7d9ad85;background:linear-gradient(145deg,#f6cb89,#d27ea9 55%,#725b9f);color:#271c3e;box-shadow:0 0 34px #e9b17b6b;transform:rotate(8deg);cursor:pointer;z-index:3;font:700 8px 'DM Mono';letter-spacing:.1em;transition:transform .25s}
+.gift-portal:hover{transform:rotate(0) scale(1.08)}.gift-star{display:block;font-size:27px;line-height:1.1}.orbit-note{position:absolute;font:9px 'DM Mono';letter-spacing:.14em;color:#aaa1c6}.note-one{left:5%;top:25%}.note-two{right:3%;top:17%}.scene-hint{position:relative;z-index:1;margin:0 0 18px;font:9px 'DM Mono';letter-spacing:.16em;color:#a49cb7}
+.warp .orbit-stage{animation:portal-zoom .85s ease-in forwards}.warp .intro-copy{animation:fade-away .4s ease-in forwards}
+.warp-particles{position:absolute;inset:0;z-index:5;pointer-events:none}.warp-particles i{position:absolute;top:50%;left:50%;width:4px;height:4px;border-radius:50%;background:#ffe7ae;box-shadow:0 0 10px #ffe7ae;opacity:0;animation:warp-spark .78s var(--delay) ease-out forwards}
+.control-top{top:25px}.live-indicator{color:#9be1d7}.live-indicator:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#9be1d7;margin:0 8px 1px 0;box-shadow:0 0 10px #9be1d7}
+.certificate-wrap{position:relative;z-index:1;width:min(100%,720px);text-align:center;padding:28px 0 16px}
+.certificate-wrap h2{font:600 clamp(34px,7vw,69px)/.98 'Space Grotesk';letter-spacing:-.07em;margin:0}
+.cert-sub{font-size:clamp(11px,2vw,15px);letter-spacing:.03em;color:#d7cad8;margin:16px 0 28px}
+.scanner-panel{position:relative;overflow:hidden;border:1px solid #b6a2cb42;background:linear-gradient(135deg,#29233dba,#161729d9);border-radius:7px;padding:15px clamp(12px,4vw,28px);text-align:left;box-shadow:0 20px 60px #07071244}
+.scanner-panel:before,.scanner-panel:after{content:"";position:absolute;top:0;bottom:0;width:1px;background:#e0add041}.scanner-panel:before{left:10px}.scanner-panel:after{right:10px}
+.scan-line{min-height:34px;display:flex;align-items:center;gap:9px;color:#807d92;font:clamp(9px,1.6vw,12px) 'DM Mono';letter-spacing:.045em;border-bottom:1px solid #ffffff0c;opacity:.48;transition:opacity .35s,color .35s}.scan-line:last-child{border:0}.scan-line.revealed{opacity:1;color:#e9e1e8}.scan-check{color:#daa7d1}.scan-status{margin-left:auto;color:#8de0d0;font-size:8px;letter-spacing:.1em}
+.scanner-beam{position:absolute;z-index:1;left:10px;right:10px;height:1px;background:#c4a3ff;box-shadow:0 0 10px 2px #bb96ff;animation:scan-pass 2.8s ease-in-out infinite;pointer-events:none}
+.approved{margin:18px 0 14px;color:#f4d185;font:700 13px 'DM Mono';letter-spacing:.22em;animation:fade-in .4s ease both}
+.pill-button,.small-button{border:1px solid #f5d493;background:#efce8c;color:#211b34;border-radius:99px;font:700 10px 'DM Mono';letter-spacing:.1em;padding:14px 22px;cursor:pointer;transition:transform .2s,background .2s,opacity .2s}
+.pill-button:hover,.small-button:hover{transform:translateY(-2px);background:#ffe0a3}.pill-button:disabled{opacity:.35;cursor:wait;transform:none}
+.control-footer{bottom:21px;color:#706c83;font-size:8px}
+.game-heading{width:min(100%,860px);position:relative;z-index:1;margin:8px 0 20px}.game-heading .eyebrow{margin-bottom:8px}.game-heading h2{font:600 clamp(40px,7vw,64px)/.94 'Space Grotesk';letter-spacing:-.07em;margin:0}.game-heading p:last-child{color:#b5adc6;font-size:13px;margin:12px 0 0}
+.game-layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(190px,.7fr);gap:22px;width:min(100%,860px);align-items:stretch}
+.game-arena{height:clamp(250px,43vh,365px);position:relative;overflow:hidden;border:1px solid #c6afd747;border-radius:10px;background:radial-gradient(ellipse at 50% 100%,#55436b 0,#26233f 45%,#19192f 88%);touch-action:none;overscroll-behavior:contain;user-select:none;-webkit-user-select:none;isolation:isolate}
+.arena-grid{position:absolute;inset:43% -20% -60%;transform:perspective(200px) rotateX(58deg);transform-origin:top;background-image:linear-gradient(#cdb5ff20 1px,transparent 1px),linear-gradient(90deg,#cdb5ff20 1px,transparent 1px);background-size:35px 25px;mask-image:linear-gradient(transparent,#000)}
+.game-hud{position:absolute;top:13px;left:15px;right:15px;display:flex;justify-content:space-between;color:#a9a1bf;font:9px 'DM Mono';letter-spacing:.12em;z-index:2}.game-hud b{display:block;color:#f8d88f;font-size:18px;letter-spacing:0;margin-top:4px}
+.game-canvas{position:absolute;z-index:2;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+.arena-overlay{position:absolute;z-index:4;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#151428d9;color:#f3d492;font:11px 'DM Mono';letter-spacing:.16em}.arena-overlay strong{font:600 40px 'Space Grotesk'}.small-button{padding:12px 18px;font-size:9px}
+.game-side{display:flex;flex-direction:column;justify-content:center;gap:0;border-top:1px solid #ffffff22}.game-rule{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #ffffff22}.rule-number{font:11px 'DM Mono';color:#e5acd2}.game-rule p{font-size:12px;line-height:1.5;color:#d0c7d7;margin:0}.total-stars{display:flex;align-items:center;justify-content:space-between;padding-top:17px;color:#a9a0ba;font:9px 'DM Mono';letter-spacing:.1em}.total-stars b{color:#f5d991;font:600 20px 'Space Grotesk'}
+.touch-controls{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:18px;margin:14px 0 4px;touch-action:none;overscroll-behavior:contain;user-select:none;-webkit-user-select:none}.touch-controls button{width:clamp(88px,12vw,112px);height:66px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid #cbb4db99;border-radius:12px;background:#25223d;color:#f1d292;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:pointer}.touch-controls button:active{background:#3b3152;border-color:#f1d292}.control-arrow{font-size:23px;line-height:1}.control-name{font:700 10px 'DM Mono';letter-spacing:.16em;color:#f4d89c}.touch-controls>span{font:8px 'DM Mono';letter-spacing:.08em;color:#847e9c;text-align:center}
+.text-restart{border:0;background:none;color:#9790ac;font:9px 'DM Mono';letter-spacing:.1em;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:10px}.text-restart:disabled{text-decoration:none;opacity:.5;cursor:default}
+.game-win-message{position:relative;z-index:1;text-align:center;margin:17px 0 0;animation:fade-in .45s both}.game-win-message h3{font:600 clamp(18px,3.4vw,27px) 'Space Grotesk';color:#f4d28e;margin:0 0 5px}.game-win-message p{font:10px 'DM Mono';letter-spacing:.12em;color:#d7c8dd;margin:0 0 13px}
+.letter-intro{position:relative;z-index:1;text-align:center;margin-bottom:20px}.letter-intro h2{font:600 clamp(42px,7vw,67px)/.94 'Space Grotesk';letter-spacing:-.07em;margin:0}.letter-intro>p:last-child{font-size:13px;color:#bcb1c6;margin:10px 0}
+.envelope{position:relative;z-index:1;width:min(82vw,390px);height:clamp(200px,34vh,270px);margin:5px auto 20px;border:1px solid #f1c6dd77;border-radius:14px;background:linear-gradient(140deg,#7a6595,#c790b1 54%,#e5bdac);box-shadow:0 25px 80px #100e1d99,0 0 50px #c791c733;cursor:pointer;overflow:hidden;transition:transform .35s}.envelope:hover{transform:translateY(-4px) rotate(-.5deg)}.envelope:before,.envelope:after{content:"";position:absolute;inset:0;background:#f2d1dd;clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%);opacity:.78}.envelope:after{background:#d8aac4;clip-path:polygon(0 100%,50% 48%,100% 100%);opacity:.75}
+.envelope-flap{position:absolute;z-index:2;inset:0;background:#efcbd7;clip-path:polygon(0 0,100% 0,50% 57%);transform-origin:top;transition:transform .6s cubic-bezier(.2,.8,.2,1)}.envelope:hover .envelope-flap{transform:rotateX(15deg)}.seal{position:absolute;z-index:3;top:40%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#f5d996;color:#69506f;font:700 20px 'Space Grotesk';box-shadow:0 3px 16px #40304b66}.envelope-label{position:absolute;z-index:4;bottom:17px;left:0;right:0;color:#563e5e;font:9px 'DM Mono';letter-spacing:.2em}
+.letter-paper{position:relative;z-index:1;width:min(100%,710px);padding:clamp(22px,5vw,47px);border:1px solid #d8b6c76b;border-radius:9px;background:linear-gradient(140deg,#f3e2d4,#e9d5e0);color:#34283d;box-shadow:0 28px 90px #08081280;animation:paper-open .6s cubic-bezier(.2,.8,.2,1) both}
+.letter-topline{font:9px 'DM Mono';letter-spacing:.16em;color:#8a637f;border-bottom:1px solid #a88aa04f;padding-bottom:13px;margin-bottom:20px}
+.letter-paper p{white-space:pre-wrap;font:clamp(13px,1.8vw,16px)/1.77 'Manrope';letter-spacing:-.01em;margin:0 0 21px}.letter-paper .pill-button{margin-top:4px}
+.finale-top{top:25px}.finale-main{position:relative;z-index:2;width:min(100%,850px);text-align:center;padding:50px 0 120px}.finale-main .eyebrow{margin-bottom:22px}.finale-main h2{font-size:clamp(37px,8vw,83px)}
+.final-gift{position:relative;width:180px;height:170px;margin:27px auto 0;border:0;background:none;cursor:pointer}.final-gift-box{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:84px;height:68px;border:1px solid #ffdda4;border-radius:8px;background:linear-gradient(140deg,#e8b8d5,#cd85bd);box-shadow:0 0 35px #e8b8d588;z-index:2}.final-gift-box:before{content:"";position:absolute;left:0;right:0;top:-14px;height:15px;border-radius:5px;background:#f4d597;border:1px solid #fff0bd}.final-gift-box i{position:absolute;left:36px;top:-15px;height:82px;width:12px;background:#f4d597}.final-gift-box b:before,.final-gift-box b:after{content:"";position:absolute;top:-27px;left:23px;width:19px;height:13px;border:4px solid #f4d597;border-radius:50% 50% 0 50%;transform:rotate(22deg)}.final-gift-box b:after{left:42px;transform:scaleX(-1) rotate(22deg)}
+.gift-rings,.gift-rings:before,.gift-rings:after{position:absolute;left:50%;top:50%;width:124px;height:124px;border:1px solid #f2cde974;border-radius:50%;transform:translate(-50%,-50%);animation:ring-pulse 2.4s ease-out infinite}.gift-rings:before,.gift-rings:after{content:"";width:100%;height:100%;animation-delay:.8s}.gift-rings:after{animation-delay:1.6s}.final-gift:hover .final-gift-box{transform:translate(-50%,-53%) scale(1.06)}
+.gift-caption{position:absolute;bottom:0;left:0;right:0;font:9px 'DM Mono';letter-spacing:.16em;color:#aaa1c1}.final-lines{display:flex;flex-direction:column;align-items:center;gap:19px}.final-lines p{font:600 clamp(15px,3vw,23px)/1.5 'Space Grotesk';color:#e9dbe9;max-width:680px;margin:0;animation:line-rise .65s both}.final-lines h2{animation:line-rise .7s both}.final-lines .signoff{font:500 clamp(17px,3vw,24px) 'Space Grotesk';color:#efb6d4}.replay-button{margin-top:7px;animation:fade-in .5s both}
+.finale-star-bank{position:absolute;z-index:1;left:50%;bottom:35px;transform:translateX(-50%);display:flex;justify-content:center;gap:5px;max-width:90%;flex-wrap:wrap;color:#ffdf94}.finale-star-bank span{font-size:11px;opacity:.75;animation:star-rise .8s calc(var(--i)*.035s) both}.finale-star-bank small{flex-basis:100%;text-align:center;color:#9690ad;font:8px 'DM Mono';letter-spacing:.13em;margin-top:5px}.celebration-burst{position:absolute;inset:0;pointer-events:none;overflow:hidden}.celebration-burst i{position:absolute;left:calc(8% + (var(--i)*3.9%));top:54%;height:6px;width:6px;border-radius:50%;background:#f7d891;box-shadow:0 0 10px #f7d891;animation:burst 1.5s calc(var(--i)*.045s) ease-out both}
+@keyframes scene-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}@keyframes twinkle{from{opacity:.2;transform:scale(.75)}to{opacity:.9;transform:scale(1.25)}}@keyframes portal-zoom{to{transform:scale(3.6);opacity:0}}@keyframes warp-spark{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(0) scale(.5)}18%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(calc(-1 * var(--distance))) scale(.2)}}@keyframes fade-away{to{opacity:0}}@keyframes scan-pass{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}@keyframes fade-in{from{opacity:0}to{opacity:1}}@keyframes float{from{transform:translate(-50%,-50%) translateY(-3px)}to{transform:translate(-50%,-50%) translateY(3px)}}@keyframes bonk{50%{transform:translateX(-50%) translateY(-9px) rotate(10deg)}}@keyframes paper-open{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes ring-pulse{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}25%{opacity:.8}100%{opacity:0;transform:translate(-50%,-50%) scale(1.55)}}@keyframes line-rise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}@keyframes star-rise{from{opacity:0;transform:translateY(14px) scale(.5)}to{opacity:.75;transform:translateY(0) scale(1)}}@keyframes burst{0%{opacity:0;transform:translateY(0) scale(.4)}20%{opacity:1}100%{opacity:0;transform:translateY(calc(-100px - (var(--i)*5px))) scale(1.7)}}
+@media(max-width:720px){.journey-progress{height:54px;padding:0 22px}.scene{min-height:calc(100dvh - 54px);padding:38px 22px 30px}.scene-kicker,.bottom-mark,.control-top,.control-footer,.finale-top{left:22px;right:22px;font-size:7px}.scene-kicker{top:18px}.bottom-mark{bottom:13px}.orbit-stage{height:clamp(245px,36vh,330px);margin-top:12px}.gift-portal{right:6%;bottom:14%;width:70px;height:70px}.note-one{left:0}.note-two{right:0}.certificate-wrap{padding-top:32px}.cert-sub{max-width:360px;margin-left:auto;margin-right:auto}.scanner-panel{padding:10px 15px}.scan-line{min-height:38px;letter-spacing:0}.scan-status{font-size:7px}.control-footer{bottom:12px}.game-heading{margin:8px 0 16px}.game-layout{grid-template-columns:1fr;gap:11px}.game-arena{height:clamp(255px,38vh,330px)}.game-side{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.game-rule{padding:10px 0}.total-stars{padding:10px 0}.touch-controls{gap:9px;margin:8px 0}.touch-controls button{width:76px;height:60px;flex:0 0 76px}.touch-controls>span{max-width:82px;font-size:7px;line-height:1.45}.game-win-message{margin-top:7px}.letter-intro{margin-bottom:12px}.letter-paper{padding:22px 20px}.letter-paper p{font-size:13px;line-height:1.72}.finale-main{padding:65px 0 125px}.finale-top{top:17px}.final-lines{gap:15px}.finale-star-bank{bottom:20px}}
+@media(max-height:720px) and (min-width:721px){.scene{padding-top:25px;padding-bottom:25px}.game-heading{margin:0 0 10px}.game-arena{height:270px}.orbit-stage{height:250px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
